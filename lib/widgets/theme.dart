@@ -7,7 +7,11 @@ class MyTheme {
         fontFamily: GoogleFonts.lato().fontFamily,
         primaryTextTheme: GoogleFonts.latoTextTheme(),
         textTheme: Theme.of(context).textTheme,
+        backgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.white,
+          elevation: 0.0,
           centerTitle: true,
         ),
       );
