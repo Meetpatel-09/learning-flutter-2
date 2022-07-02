@@ -16,6 +16,12 @@ class MyTheme {
         ),
       );
 
-  static ThemeData darkTheme(BuildContext context) =>
-      ThemeData(brightness: Brightness.dark);
+  static ThemeData darkTheme(BuildContext context) => ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.deepPurple,
+        fontFamily: GoogleFonts.lato().fontFamily,
+      );
+
+  static Color creamColor = const Color(0xfff5f5f5);
+  static Color darkBluishColor = const Color(0xff000080);
 }
