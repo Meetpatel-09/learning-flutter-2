@@ -1,5 +1,6 @@
 import 'package:demo_fluuter/models/catalog_model.dart';
-import 'package:demo_fluuter/widgets/home/catalog_item.dart';
+import 'package:demo_fluuter/widgets/home/catalog_header.dart';
+import 'package:demo_fluuter/widgets/home/catalog_list.dart';
 import 'package:demo_fluuter/widgets/theme.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    // await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     final String catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
@@ -55,9 +56,7 @@ class _HomePageState extends State<HomePage> {
               if (CatalogModel.Items != null && CatalogModel.Items.isNotEmpty)
                 const Expanded(child: CatalogList())
               else
-                const Center(
-                  child: CircularProgressIndicator(),
-                )
+                const CircularProgressIndicator().centered().expand()
             ],
           ),
         ),
@@ -66,39 +65,3 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CatalogHeader extends StatelessWidget {
-  const CatalogHeader({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        "Catalog App".text.xl4.bold.color(MyTheme.darkBluishColor).make(),
-        "Trending Products".text.xl.make(),
-      ],
-    );
-  }
-}
-
-class CatalogList extends StatefulWidget {
-  const CatalogList({Key? key}) : super(key: key);
-
-  @override
-  State<CatalogList> createState() => _CatalogListState();
-}
-
-class _CatalogListState extends State<CatalogList> {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: CatalogModel.Items.length,
-        itemBuilder: (context, index) {
-          final catalog = CatalogModel.Items[index];
-          return CatalogItem(
-            catalogItem: catalog,
-          ).p(10);
-        });
-  }
-}

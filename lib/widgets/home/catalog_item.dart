@@ -1,4 +1,5 @@
 import 'package:demo_fluuter/models/catalog_model.dart';
+import 'package:demo_fluuter/widgets/home/catalog_image.dart';
 import 'package:demo_fluuter/widgets/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -12,11 +13,10 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          VxBox(child: Image.network(catalogItem.image).p(14))
-              .size(100.0, 100.0)
-              .rounded
-              .color(Colors.white)
-              .make(),
+          Hero(
+            tag: Key(catalogItem.id.toString()),
+            child: CatalogImage(catalogItem: catalogItem),
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
