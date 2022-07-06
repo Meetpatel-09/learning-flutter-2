@@ -1,3 +1,4 @@
+import 'package:demo_fluuter/pages/cart_page.dart';
 import 'package:demo_fluuter/pages/home_page.dart';
 import 'package:demo_fluuter/pages/login_page.dart';
 import 'package:demo_fluuter/utils/routes.dart';
@@ -15,14 +16,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light, // currently light theme
+      themeMode: ThemeMode.dark, // currently light theme
       darkTheme: MyTheme.darkTheme(context),
       theme: MyTheme.lightTheme(context),
-      initialRoute: MyRoute.homeRoute,
+      initialRoute: MyRoute.loginRoute,
       routes: {
         "/": (context) => const LoginPage(),
         MyRoute.loginRoute: (context) => const LoginPage(),
         MyRoute.homeRoute: (context) => const HomePage(),
+        MyRoute.cartPageRoute: (context) => const CartPage(),
       },
     );
   }

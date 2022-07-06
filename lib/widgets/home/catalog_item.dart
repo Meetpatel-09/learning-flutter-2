@@ -21,19 +21,26 @@ class CatalogItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                catalogItem.name.text.lg.semiBold.make(),
-                catalogItem.desc.text.make(),
+                catalogItem.name.text.lg.semiBold
+                    .color(context.cardColor)
+                    .make(),
+                catalogItem.desc.text.color(context.cardColor).make(),
                 ButtonBar(
                   alignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    "\$${catalogItem.price}".text.bold.make(),
+                    "\$${catalogItem.price}"
+                        .text
+                        .color(context.cardColor)
+                        .bold
+                        .make(),
                     ElevatedButton(
                       style: ButtonStyle(
+                        shape: MaterialStateProperty.all(const StadiumBorder()),
                         backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBluishColor),
+                            MaterialStateProperty.all(context.primaryColor),
                       ),
                       onPressed: () {},
-                      child: "Buy".text.make(),
+                      child: "Add to cart".text.make(),
                     )
                   ],
                 )
@@ -42,6 +49,6 @@ class CatalogItem extends StatelessWidget {
           )
         ],
       ),
-    ).color(Colors.white).rounded.make();
+    ).color(context.canvasColor).rounded.make();
   }
 }

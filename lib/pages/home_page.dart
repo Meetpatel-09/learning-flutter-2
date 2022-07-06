@@ -1,7 +1,9 @@
 import 'package:demo_fluuter/models/catalog_model.dart';
+import 'package:demo_fluuter/utils/routes.dart';
 import 'package:demo_fluuter/widgets/home/catalog_header.dart';
 import 'package:demo_fluuter/widgets/home/catalog_list.dart';
-import 'package:demo_fluuter/widgets/theme.dart';
+import 'package:demo_fluuter/widgets/drawer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -44,14 +46,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.backgroundColor,
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CatalogHeader(),
+              const CatalogHeader().p16(),
               // ignore: unnecessary_null_comparison
               if (CatalogModel.Items != null && CatalogModel.Items.isNotEmpty)
                 const Expanded(child: CatalogList())
@@ -59,9 +61,19 @@ class _HomePageState extends State<HomePage> {
                 const CircularProgressIndicator().centered().expand()
             ],
           ),
+        ).pLTRB(0, 0, 0, 20.0),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, MyRoute.cartPageRoute);
+        },
+        backgroundColor: context.primaryColor,
+        child: const Icon(
+          CupertinoIcons.cart,
+          color: Colors.white,
         ),
       ),
+      drawer: const MyDrawer(),
     );
   }
 }
-

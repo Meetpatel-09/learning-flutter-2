@@ -1,5 +1,6 @@
 import 'package:demo_fluuter/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -66,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   return null;
                 },
+                style: TextStyle(color: context.cardColor),
                 decoration: const InputDecoration(
                   hintText: "Enter Username",
                   label: Text("Name"),
@@ -85,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   }
                 },
                 obscureText: true,
+                style: TextStyle(color: context.cardColor),
                 decoration: const InputDecoration(
                   hintText: "Enter Password",
                   label: Text("Password"),

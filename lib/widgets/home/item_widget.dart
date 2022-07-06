@@ -1,5 +1,6 @@
 import 'package:demo_fluuter/models/catalog_model.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class ItemWidget extends StatelessWidget {
   final Item item;
@@ -18,9 +19,9 @@ class ItemWidget extends StatelessWidget {
         subtitle: Text(item.desc),
         trailing: Text(
           "\$${item.price}",
-          style: const TextStyle(
+          style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.deepPurple,
+              color: context.primaryColor,
               fontSize: 16.0),
         ),
       ),
